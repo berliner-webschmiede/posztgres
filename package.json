@@ -1,0 +1,26 @@
+{
+  "name": "posztgres",
+  "version": "0.0.1",
+  "description": "docker image for DBMS for cybersecurityKnowledgeDatabaseEU",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "build": "node startup.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/berliner-webschmiede/posztgres.git"
+  },
+  "author": "Philipp Fleischer",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/berliner-webschmiede/posztgres/issues"
+  },
+  "homepage": "https://github.com/berliner-webschmiede/posztgres#readme",
+  "dependencies": {
+    "child_process": "^1.0.2",
+    "os": "^0.1.1",
+    "pg": "^8.5.1"
+  }
+}

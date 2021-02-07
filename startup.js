@@ -56,5 +56,7 @@ if(operatingSystem === 'win32'){
         }
         console.log(`stdout: ${stdout}`);
     });
+
+    
     
 }

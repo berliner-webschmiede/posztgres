@@ -7,5 +7,6 @@ RUN git clone https://github.com/berliner-webschmiede/posztgres
 WORKDIR /posztgres
 
 RUN npm install --save
-
-CMD npm start
+RUN npx prisma generate
+EXPOSE 5000
+CMD npx prisma studio

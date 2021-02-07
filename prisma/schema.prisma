@@ -25,6 +25,8 @@ model Attack {
 
   fine String
 
+  protections Protection[]
+
 }
 
 model Protection {
@@ -40,6 +42,8 @@ model Protection {
   author    User?   @relation(fields: [authorId], references: [id])
 
   authorId  Int?
+
+  attacks Attack[]
 
 }
 

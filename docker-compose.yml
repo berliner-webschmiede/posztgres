@@ -1,0 +1,21 @@
+# docker-compose.yml
+version: "3"
+services:
+  app:
+    build: .
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: postgresql://postgres:password@0.0.0.0:5432/cyber?schema=public
+    ports:
+      - "5555:5555"
+
+  postgres:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: cyber
+    command: bash -c "apt-get update && apt-get upgrade -y && apt-get install git -y && git clone https://github.com/berliner-webschmiede/posztgres && cd posztgres/DB && psql <\ startup.sql"

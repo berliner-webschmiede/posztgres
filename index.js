@@ -5,38 +5,28 @@
  * This Software is under the GPLV3.0 license. It may be freely distributed and or changed
  */
 
-const pg = require('pg')
-const client = new pg({ 
-    user: 'postgres',
-    host: 'localhost',
-    database: 'cyber',
-    password: 'password',
-    port: 5432,
-})
-await client.connect()
+import { PrismaClient } from '@prisma/client'
 
+const prisma = new PrismaClient()
 
-client.query('create database cyber;')
-client.query(`create table attacks(
-    id: text not null,
-    name: text not null,
-    content: text not null,
-    foreign key: users(id)
-); `)
-client.query(`create table protections(
-    id: text not null,
-    name: text not null,
-    content: text not null,
-    foreign key: users(id)
-); `)
-client.query(`create table users (
-    id: text not null,
-    password: text not null,
-    bio: text,
-    email: text not null,
-);`)
+// A `main` function so that you can use async/await
 
+async function main() {
 
+  // ... you will write your Prisma Client queries here
 
+}
 
-client.end()
+main()
+
+  .catch(e => {
+
+    throw e
+
+  })
+
+  .finally(async () => {
+
+    await prisma.$disconnect()
+
+  })

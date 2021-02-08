@@ -17,7 +17,7 @@ services:
       context: ./DB/.
       dockerfile: Dockerfile-db
     volumes:
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./init.sql:/docker-entrypoint-initdb.d/startup.sql
     ports:
       - "5432:5432"
     environment:

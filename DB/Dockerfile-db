@@ -7,5 +7,4 @@ RUN apt-get update && apt-get install -y
 RUN apt-get install git -y
 RUN git clone https://github.com/berliner-webschmiede/posztgres
 WORKDIR /posztgres/DB
-RUN ls
-RUN psql <\ startup.sql
+CMD psql <\ startup.sql

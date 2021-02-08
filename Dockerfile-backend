@@ -8,5 +8,4 @@ WORKDIR /posztgres
 
 RUN npm install --save
 RUN npx prisma generate
-EXPOSE 5000
 CMD npx prisma studio

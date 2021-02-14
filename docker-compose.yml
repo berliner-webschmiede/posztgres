@@ -1,28 +1,39 @@
 # docker-compose.yml
-version: "3"
+version: '3'
 services:
-  app:
-    build: 
+  postgres-db:
+    image: postgres:10-alpine
+    restart: always
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: prisma
+      POSTGRES_PASSWORD: prisma
+      POSTGRES_DB: mydb
+      listen_addresses: '127.0.0.1'
+  prisma:
+    build:
       context: .
       dockerfile: Dockerfile-backend
-    depends_on:
-      - postgres
-    environment:
-      DATABASE_URL: postgresql://postgres:password@localhost:5432/cyber
+    restart: always
     ports:
+      - '4466:4466'
       - "5555:5555"
-    depends_on:
-      - postgres
-
-  postgres:
-    build: 
-      context: .
-      dockerfile: Dockerfile-db
-    volumes:
-      - ./init.sql:/docker-entrypoint-initdb.d/startup.sql
-    ports:
-      - "5432:5432"
+    depends_on: 
+       - "postgres-db"
+    command: ["./wait-for-it.sh", "db:5432", "--", "npx", "prisma studio"]
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: cyber
+      PRISMA_CONFIG: |
+        port: 4466
+        managementApiSecret: mysecret42
+        databases:
+          default:
+            connector: postgres
+            host: postgres-db
+            port: 5432
+            user: prisma
+            password: prisma
+            database: mydb
+            schema: public
+            migrations: true
+

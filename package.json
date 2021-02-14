@@ -19,13 +19,13 @@
   },
   "homepage": "https://github.com/berliner-webschmiede/posztgres#readme",
   "dependencies": {
-    "@prisma/client": "^2.16.0",
     "child_process": "^1.0.2",
     "os": "^0.1.1",
     "pg": "^8.5.1",
     "prisma-client": "0.0.0"
   },
   "devDependencies": {
-    "prisma": "^2.16.0"
+    "@prisma/client": "^2.16.1",
+    "prisma": "^2.16.1"
   }
 }

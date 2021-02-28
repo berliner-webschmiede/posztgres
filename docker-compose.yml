@@ -28,7 +28,7 @@ services:
     depends_on: 
        postgres-db:
                   condition: "service_healthy"
-    command: ["npx", "prisma studio","prisma migrate dev --preview-feature"]
+    command: ["npx prisma studio && npx prisma migrate dev --preview-feature"]
     environment:
       PRISMA_CONFIG: |
         port: 4466

@@ -8,4 +8,5 @@ RUN npm install
 RUN npx prisma generate
 EXPOSE 4466
 EXPOSE 5555
+CMD npx prisma studio && npx prisma migrate dev --preview-feature
 
